@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped text-left">
+        <thead class="table-dark">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Cost Basis</th>
+                <th>Current Price</th>
+                <th>Profit</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in portfolio %}
+                <tr>
+                    <!-- Use "Cash balance" for cash since CASH is already a ticker symbol. Name, shares and price are empty for cash -->
+                    <td>{{ stock.symbol }}</td>
+                    <td>{{ stock.name }}</td>
+                    <td>{{ stock.shares }}</td>
+                    <td>{{ stock.cost_basis|usd }}</td>
+                    <td>{{ stock.current_price|usd }}</td>
+                    {% if stock.profit >= 0 %}
+                        <td style="color: #2e944b">{{ stock.profit|usd }} ({{ "{:.2f}%".format(stock.profit_percent) }})</td>
+                    {% else %}
+                        <td style="color: #ea433b">{{ stock.profit|usd }} ({{ "{:.2f}%".format(stock.profit_percent) }})</td>
+                    {% endif %}
+                    <td>{{ (stock.shares * stock.current_price)|usd }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>Cash balance</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash|usd }}</td>
+            </tr>
+        </tbody>
+        <tfoot class="table-warning">
+            <tr>
+                <td><strong>TOTAL</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><strong>{{ portfolio_total|usd }}</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

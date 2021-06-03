@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <h2>User Settings</h2>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Change username</h4>
+            <p>Current username: {{ username }}</p>
+            <form action="/settings" method="post">
+                <div class="form-group">
+                    <input type="text" autocomplete="off" class="form-control" name="new-username" placeholder="New username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password-check" placeholder="Password" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Save changes</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title pb-2">Change password</h4>
+            <form action="/settings" method="post">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password-check" placeholder="Old password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="new-password" placeholder="New password" onkeyup="checkStrength(this.value)" required>
+                    <div class="strength-info">
+                        <div class="form-text text-left" style="display: none">Password strength: <strong class="strength-text"></strong></div>
+                        <div class="strength-bar progress" style="display: none"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="confirmation" placeholder="Confirm new password" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Save changes</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title pb-2">Add cash</h4>
+            <form action="/settings" method="post">
+                <div class="form-group">
+                    <input type="number" class="form-control" name="cash-deposit" placeholder="Value in USD" min="1" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Save changes</button>
+            </form>
+        </div>
+    </div>
+    <div class="card border-danger">
+        <div class="card-body">
+            <h4 class="card-title">Delete account</h4>
+            <p class="text-danger"><strong>WARNING!</strong> Deleting your account cannot be undone.</p>
+            <form action="/settings" method="post">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password-delete" placeholder="Confirm with password" required>
+                </div>
+                <button class="btn btn-danger" type="submit">Delete account</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

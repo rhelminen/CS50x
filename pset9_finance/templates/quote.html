@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input name="symbol" class="form-control" type="text" placeholder="Stock ticker (e.g. AAPL)" autocomplete="off" autofocus required>
+        </div>
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+
+    {% if api_data %}
+        <hr>
+        <div class="text-center">
+            <p><strong>Company: </strong>{{ api_data.name }}</p>
+            <p><strong>Ticker: </strong>{{ api_data.symbol }}</p>
+            <p><strong>Price: </strong>{{ api_data.price|usd }}</p>
+        </div>
+    {% endif %}
+
+{% endblock %}
