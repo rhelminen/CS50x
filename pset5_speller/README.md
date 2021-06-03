@@ -13,7 +13,7 @@ Using a hash function off the internet was also allowed for the assignment, so a
 
 ## HOW TO USE
 
-1. If you don't have all the required packages installed, you can run the program on the [CS50 IDE](https://ide.cs50.io) (log in with your github account and upload the files).
+1. Install required packages. Alternatively, you can run the program on the [CS50 IDE](https://ide.cs50.io) (log in with your github account and upload the files there).
 
 1. After compiling the code for `speller.c`, run with:
     ```
