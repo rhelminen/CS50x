@@ -1,4 +1,4 @@
-# Problem set 5 - Speller
+# Problem Set 5 - Speller
 
 https://cs50.harvard.edu/x/2021/psets/5/speller/
 
