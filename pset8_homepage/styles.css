@@ -1,0 +1,237 @@
+/* Reusable color variables */
+:root {
+    --primary-color: #c81818;
+    --primary-dark: #9B1111;
+    --primary-light: #ff1b1b;
+}
+
+/* General settings for all pages */
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+.main {
+    max-width: 745px;
+    margin: 30px auto 50px auto;
+}
+
+/* General purpose text styles */
+.hidden-text {
+    visibility: hidden;
+}
+
+.faded-text {
+    color: #999;
+}
+
+.select-disable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+/* Navbar colors (other styling & functionality is handled by Bootstrap) */
+#logo {
+    color: var(--primary-dark);
+}
+
+#logo:hover {
+    color: var(--primary-color);
+}
+
+/* The "active" class was already in use by Bootstrap, so !important is needed to override it */
+.active {
+    color: var(--primary-color) !important;
+}
+
+.active:hover {
+    color: var(--primary-light) !important;
+}
+
+/* Typewriter text styling */
+.typewriter-effect {
+    font-family: "Courier New", monospace;
+    font-size: 1.25rem;
+    color: #19d000;
+    position: relative;
+    margin-left: 1rem;
+}
+
+/* Blinking cursor for typewriter effect */
+.typewriter-effect::after {
+    content: "";
+    position: relative;
+    width: 2px;
+    height: 1.5rem;
+    margin-left: 0.2rem;
+    border-right: 2px solid;
+    animation: blink 0.6s ease infinite alternate;
+}
+
+@keyframes blink {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+/* Bootstrap icons */
+.bi {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.bi-github:hover {
+    color: var(--primary-color);
+}
+
+/* Programming language icons */
+#icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    margin: 40px auto 15px auto;
+}
+
+.icon-lg {
+    width: 100px;
+    height: 100px;
+    filter: grayscale(100%);
+}
+
+.icon-lg:hover {
+    width: 120px;
+    height: 120px;
+    filter: none;
+}
+
+.hidden-svg {
+    display: none;
+}
+
+/* Programming language icon names */
+figcaption {
+    opacity: 0;
+    font-weight: bold;
+}
+
+figure:hover figcaption {
+    opacity: 1;
+}
+
+/* Default styling for links */
+a {
+    text-decoration: none;
+    color: #6086ff;
+}
+
+a:hover {
+    color: #3e6dff;
+}
+
+/* Contact form */
+#contact-form {
+    width: 500px;
+    margin: auto;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+input[type=submit] {
+    height: 50px;
+    background-color: #1a75ff;
+    color: #fff;
+    border: 2px solid transparent;
+    border-radius: 0.25rem;
+    margin-top: 8px;
+}
+
+input[type=submit]:hover {
+    background-color: #005CE6;
+}
+
+/* Media queries for smaller screen sizes */
+@media(max-width: 768px) {
+    .main {
+        max-width: 540px;
+    }
+
+    #icons {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        margin-bottom: 0px;
+    }
+
+    .icon-lg {
+        height: 75px;
+        width: 75px;
+    }
+
+    .icon-lg:hover {
+        height: 90px;
+        width: 90px;
+    }
+
+    #contact-form {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 420px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .col {
+        margin-top: 0.5rem;
+    }
+}
+
+@media(max-width: 500px) {
+    #contact-form {
+        width: 290px;
+    }
+}
+
+@media(max-width: 374px) {
+    .bandcamp {
+        display: none;
+    }
+}
+
+/* On touchscreens, icons change style on long press instead of hover */
+@media(hover: none) {
+    .icon-lg:active {
+        filter: none;
+        user-select: none;
+        transition: 2s;
+    }
+
+    .icon-lg:active + figcaption {
+        opacity: 1;
+        transition: 2s;
+    }
+}
